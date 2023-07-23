@@ -1,0 +1,259 @@
+package Model;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Scanner;
+import javax.swing.*;
+
+public class Main {
+    static Clientes cliente = new Clientes();
+    static ArrayList<Clientes> clientes = new ArrayList<Clientes>();
+    static ArrayList<Produto> produtos = new ArrayList<Produto>();
+    static Produto produto = new Produto();
+    static Carrinho carrinho = new Carrinho();
+
+    public static void main(String[] args) throws ParseException {
+
+        TelaInicial menu = new TelaInicial();
+        menu.setVisible(true);
+
+    }
+    
+    
+
+    static void cadastrar() {
+        JLabel lbNome = new JLabel("Nome");
+        JTextField tNome = new JTextField();
+
+        JLabel lbDataNasc = new JLabel("Data de Nascimento");
+        JTextField tDataNasc = new JTextField("dd/mm/aaaa");
+
+        JLabel lbEmail = new JLabel("E-mail");
+        JTextField tEmail = new JTextField("email@gmail.com");
+
+        JLabel lbCpf = new JLabel("CPF");
+        JTextField tCpf = new JTextField("000.000.000-00");
+
+        JLabel lbLogin = new JLabel("Nome de Usuário");
+        JTextField tLogin = new JTextField();
+
+        JLabel lbSenha = new JLabel("Senha");
+        JPasswordField tSenha = new JPasswordField();
+
+        Object[] layout = {lbNome, tNome, lbDataNasc, tDataNasc, lbEmail, tEmail, lbCpf, tCpf, lbLogin, tLogin, lbSenha, tSenha};
+
+        JOptionPane.showMessageDialog(null, layout, "Cadastro", JOptionPane.QUESTION_MESSAGE);
+
+        String nome = tNome.getText();
+        String dNasc = tDataNasc.getText();
+        String email = tEmail.getText();
+        String cpf = tCpf.getText();
+        String login = tLogin.getText();
+        String senha = String.valueOf(tSenha.getPassword());
+
+
+        if (buscarCliente(cpf) == null) {
+            Clientes cadastrado = new Clientes(nome, dNasc, cpf, email, login, senha);
+            clientes.add(cadastrado);
+            JOptionPane.showInternalMessageDialog(null, "Cadastro Efetuado", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showInternalMessageDialog(null, "Cliente Existente!", "Cadastro", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    public static Clientes buscarCliente1(String login) {
+        cliente = null;
+        for (Clientes listaE : clientes) {
+            if (listaE.getLogin().equals(login)) {
+                cliente = listaE;
+            }
+        }
+        return cliente;
+    }
+
+    public static Clientes buscarCliente(String cpf) {
+        Clientes clienteB = null;
+        for (Clientes listaE : clientes) {
+            if (listaE.getCpf().equals(cpf)) {
+                clienteB = listaE;
+            }
+        }
+        return clienteB;
+
+    }
+
+    static void login() {
+
+        JLabel lblogin = new JLabel("Login");
+        JLabel lbsenha = new JLabel("Senha");
+        JTextField login = new JTextField();
+        JPasswordField senha = new JPasswordField();
+
+        Object[] layout = {lblogin, login, lbsenha, senha};
+
+
+        JOptionPane.showInternalMessageDialog(null, layout, "Login", JOptionPane.INFORMATION_MESSAGE);
+        String login1 = login.getText();
+        String senha1 = String.valueOf(senha.getPassword());
+        boolean logado = false;
+        for (Clientes log : clientes) {
+            if (log.logar(login1, senha1).equals("Acesso efetuado")) {
+                JOptionPane.showMessageDialog(null, log.logar(login1, senha1), "Acesso efetuado", JOptionPane.INFORMATION_MESSAGE);
+                cliente = log;
+                menuInicial();
+                logado = true;
+            }
+        }
+        if (!logado) {
+            JOptionPane.showMessageDialog(null, "Tente Novamente", "Acesso negado!", JOptionPane.INFORMATION_MESSAGE);
+
+        }
+
+
+    }
+
+    public static void menuInicial() {
+        JButton Mprodutos = new JButton("Mostrar Produtos");
+        Mprodutos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarProdutos();
+            }
+        });
+        JButton carrinho = new JButton("Carrinho de Compras");
+        carrinho.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carrinhoCompras();
+            }
+        });
+        JButton mostrarInfo = new JButton("Mostrar Informações");
+        mostrarInfo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, cliente.mostrarDados(), "Informações", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+
+        Object[] layout = {Mprodutos, carrinho, mostrarInfo};
+
+        JOptionPane.showMessageDialog(null, layout, "Bolzanell's shop", JOptionPane.PLAIN_MESSAGE);
+
+
+
+    }
+    public static void mostrarProdutos(){
+
+        JButton esportes = new JButton("Esportes");
+        esportes.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                produtosEsportes();
+            }
+        });
+        JButton inverno = new JButton("Inverno");
+        inverno.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                produtosInverno();
+            }
+        });
+
+        Object[] layout = {esportes, inverno};
+
+        JOptionPane.showMessageDialog(null, layout, "Categorias", JOptionPane.DEFAULT_OPTION);
+    }
+
+    public static void produtosEsportes(){
+        JButton addCarrinho = new JButton("Adicionar ao Carrinho");
+        addCarrinho.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addCarrinhoCompras(produto);
+            }
+        });
+
+        JButton bCamisa = new JButton("Camisa do Vasco");
+        bCamisa.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Produto camisaVasco = new Produto("Camisa do Vasco", "Camisa do Vasco 2022 camisa 10", 49.99, "G", "Keppa", "Branca e Preta", "Esportes", 5);
+                produto = camisaVasco;
+                Object[] telaProduto = {camisaVasco.toString(), addCarrinho};
+                JOptionPane.showMessageDialog(null, telaProduto, "Esportes", JOptionPane.DEFAULT_OPTION );
+
+            }
+        });
+        JButton bChuteira = new JButton("Chuteira Pro 5");
+        bChuteira.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Produto chuteira = new Produto("Chuteira Umbro Pro 5", "Chuteira Umbro 2023 Pro 5 Bump Nova", 326.00, "42", "Umbro", "Azul", "Esportes", 3);
+                produto = chuteira;
+                Object[] telaProduto = {chuteira.toString(), addCarrinho};
+                JOptionPane.showMessageDialog(null, telaProduto, "Esportes", JOptionPane.DEFAULT_OPTION);
+
+            }
+        });
+
+        Object[] layout = {bCamisa , bChuteira};
+
+        JOptionPane.showMessageDialog(null, layout, "Esportes", JOptionPane.DEFAULT_OPTION);
+
+
+    }
+    public static void produtosInverno(){
+        JButton addCarrinho = new JButton("Adicionar ao Carrinho");
+        addCarrinho.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addCarrinhoCompras(produto);
+            }
+        });
+
+        JButton bCasaco = new JButton("Casaco Bart Simpson");
+        bCasaco.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Produto casaco = new Produto("Moletom Bart Simpson", "Moletom Inverno Simpsons Novo", 145.00, "GG", "Nike", "Preto", "Inverno", 2);
+                produto = casaco;
+                Object[] telaProduto = {casaco.toString(), addCarrinho};
+                JOptionPane.showMessageDialog(null, telaProduto, "Esportes", JOptionPane.DEFAULT_OPTION );
+            }
+        });
+        JButton bCalca = new JButton("Calça Moletom");
+        bCalca.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Produto calca = new Produto("Calça Moletom", "Calça Inverno Adidas", 99.99, "G", "Adidas", "Azul Escuro", "Inverno", 2);
+                produto = calca;
+                Object[] telaProduto = {calca.toString(), addCarrinho};
+                JOptionPane.showMessageDialog(null, telaProduto, "Esportes", JOptionPane.DEFAULT_OPTION);
+            }
+        });
+
+        Object[] layout = {bCasaco , bCalca};
+
+        JOptionPane.showMessageDialog(null, layout, "Inverno", JOptionPane.DEFAULT_OPTION);
+    }
+
+    public static void addCarrinhoCompras(Produto produto){
+        int quantidade = Integer.parseInt(JOptionPane.showInputDialog("Quantas unidades?"));
+
+        if(quantidade <= produto.getQuantidadeEestoque()){
+            JOptionPane.showMessageDialog(null, "Produto Adicionado ao Carrinho", "Produto", JOptionPane.INFORMATION_MESSAGE);
+            carrinho.adicionarProduto(produto);
+            carrinho.setQuantidade(quantidade);
+            System.out.println(produto.toString());
+
+        }else{
+            JOptionPane.showMessageDialog(null, "Estoque insuficiente", "Produtos", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    public static void carrinhoCompras(){
+        JOptionPane.showMessageDialog(null, carrinho.toString(), "Carrinho de Compras", JOptionPane.DEFAULT_OPTION);
+
+    }
+}

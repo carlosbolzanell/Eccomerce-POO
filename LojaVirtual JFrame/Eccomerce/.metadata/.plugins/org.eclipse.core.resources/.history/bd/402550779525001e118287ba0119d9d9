@@ -1,0 +1,170 @@
+package Model;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JTabbedPane;
+import javax.swing.JButton;
+import java.awt.Color;
+import javax.swing.JScrollPane;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JTextArea;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+public class TelaLoja extends JFrame {
+
+	private JPanel contentPane;
+	private JTable table;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					TelaLoja frame = new TelaLoja();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public TelaLoja() {
+		setBackground(new Color(0, 0, 255));
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(0, 0, 255));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(0, 0, 434, 261);
+		tabbedPane.setBackground(new Color(255, 255, 255));
+		contentPane.add(tabbedPane);
+		
+		JPanel pProdutos = new JPanel();
+		pProdutos.setBackground(new Color(255, 255, 255));
+		pProdutos.setToolTipText("");
+		tabbedPane.addTab("Produtos", null, pProdutos, null);
+		pProdutos.setLayout(null);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(82, 89, 89, 23);
+		pProdutos.add(btnNewButton);
+		
+		JPanel pCarrinho = new JPanel();
+		pCarrinho.setBackground(new Color(255, 255, 255));
+		tabbedPane.addTab("Carrinho", null, pCarrinho, null);
+		pCarrinho.setLayout(null);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(427, 0, -426, 193);
+		
+		table = new JTable();
+		table.setFillsViewportHeight(true);
+		table.setBackground(new Color(0, 0, 0));
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+			},
+			new String[] {
+				"Produto", "Quantidade", "Pre\u00E7o", "Remover"
+			}
+		));
+		scrollPane_1.setViewportView(table);
+		pCarrinho.add(scrollPane_1);
+		
+		JButton btnNewButton_1 = new JButton("New button");
+		btnNewButton_1.setBounds(340, 199, 89, 23);
+		pCarrinho.add(btnNewButton_1);
+		
+		JPanel pConta = new JPanel();
+		pConta.setBackground(new Color(255, 255, 255));
+		tabbedPane.addTab("Conta", null, pConta, null);
+		pConta.setLayout(null);
+		
+		JLabel lbNome = new JLabel("Nome");
+		lbNome.setForeground(new Color(0, 0, 0));
+		lbNome.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 15));
+		lbNome.setBounds(36, 28, 46, 14);
+		pConta.add(lbNome);
+		
+		JLabel lbCpf = new JLabel("CPF");
+		lbCpf.setForeground(new Color(0, 0, 0));
+		lbCpf.setFont(new Font("Microsoft JhengHei Light", Font.PLAIN, 15));
+		lbCpf.setBounds(245, 27, 70, 14);
+		pConta.add(lbCpf);
+		
+		JLabel lbDataN = new JLabel("Data de Nascimento");
+		lbDataN.setForeground(new Color(0, 0, 0));
+		lbDataN.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 15));
+		lbDataN.setBounds(36, 73, 152, 14);
+		pConta.add(lbDataN);
+		
+		JLabel lbEmail = new JLabel("Email");
+		lbEmail.setForeground(new Color(0, 0, 0));
+		lbEmail.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 15));
+		lbEmail.setBounds(245, 75, 58, 14);
+		pConta.add(lbEmail);
+		
+		JLabel lbUser = new JLabel("Usuário");
+		lbUser.setForeground(new Color(0, 0, 0));
+		lbUser.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 15));
+		lbUser.setBounds(36, 121, 58, 14);
+		pConta.add(lbUser);
+		
+		JButton btnEndereco = new JButton("Ver Endereços");
+		btnEndereco.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 15));
+		btnEndereco.setBackground(Color.WHITE);
+		btnEndereco.setBounds(245, 137, 152, 33);
+		pConta.add(btnEndereco);
+		
+		JButton btnEdit = new JButton("Editar");
+		btnEdit.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 15));
+		btnEdit.setBackground(Color.WHITE);
+		btnEdit.setBounds(245, 175, 152, 33);
+		pConta.add(btnEdit);
+		
+		JTextArea txaNome = new JTextArea();
+		txaNome.setBackground(new Color(128, 255, 255));
+		txaNome.setBounds(36, 44, 152, 22);
+		pConta.add(txaNome);
+		
+		JTextArea txaDataN = new JTextArea();
+		txaDataN.setBackground(new Color(128, 255, 255));
+		txaDataN.setBounds(36, 91, 152, 22);
+		pConta.add(txaDataN);
+		
+		JTextArea txaUser = new JTextArea();
+		txaUser.setBackground(new Color(128, 255, 255));
+		txaUser.setBounds(36, 137, 152, 22);
+		pConta.add(txaUser);
+		
+		JTextArea txaCpf = new JTextArea();
+		txaCpf.setBackground(new Color(128, 255, 255));
+		txaCpf.setBounds(245, 44, 152, 22);
+		pConta.add(txaCpf);
+		
+		JTextArea txaEmail = new JTextArea();
+		txaEmail.setBackground(new Color(128, 255, 255));
+		txaEmail.setBounds(245, 91, 152, 22);
+		pConta.add(txaEmail);
+	}
+}
