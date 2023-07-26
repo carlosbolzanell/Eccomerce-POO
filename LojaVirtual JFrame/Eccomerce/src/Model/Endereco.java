@@ -45,8 +45,8 @@ public class Endereco {
 
     /** Procedimento para trazer o nome da categoria para armazenar na variavel
      * @param indentificação*/
-    public void setIndentificacao(String indentificação) {
-        this.indentificacao = indentificação;
+    public void setIndentificacao(String indentificacao) {
+        this.indentificacao = indentificacao;
     }
 
     /** Metodo para retornar o nome da categoria para o objeto
