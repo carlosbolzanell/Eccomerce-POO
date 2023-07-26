@@ -18,6 +18,7 @@ public class Produto {
     private String marca;
     private String cor;
     private int quantidadeEestoque;
+    private int quantidadeEscolhida;
 
     /** Construtor para inicializar o obejo com os atibutos atribuidos */
     public Produto(String nome, String descricao, double valor, String modelo, String marca, String cor, String categoria, int quantidadeEestoque) {
@@ -143,33 +144,25 @@ public class Produto {
 	/** Procedimento para trazer o nome da categoria para armazenar na variavel
 	 * @param quantidadeEestoque*/
 	public void setQuantidadeEestoque(int quantidadeEestoque) {
-		this.quantidadeEestoque += quantidadeEestoque;
+		this.quantidadeEestoque = quantidadeEestoque;
 	}
 	
 	public String temEstoque(String quantidade) {
 		int quant = Integer.parseInt(quantidade);
 		
 		if(quant <= this.quantidadeEestoque) {
-			quantidadeEestoque -= quant;
-			System.out.print(this.quantidadeEestoque);
 			return "0";
 		}
 		
 		return "1";
 	}
-	
-	/** Metodo para retornar o nome da categoria para o objeto
-	 * @return toString*/
-	@Override
-	public String toString() {
-		return  "Nome: " + nome + "\n"+
-				"Preço: R$" + valor + "\n" +
-				"Categoria: " + categoria + "\n" +
-				"Descricao: " + descricao + '\n' +
-				"Modelo: " + modelo + '\n' +
-				"Marca: " + marca + '\n' +
-				"Cor: " + cor + '\n' +
-				"Quantidade em estoque: " + quantidadeEestoque;
+
+	public int getQuantidadeEscolhida() {
+		return quantidadeEscolhida;
+	}
+
+	public void setQuantidadeEscolhida(int quantidadeEscolhida) {
+		this.quantidadeEscolhida = quantidadeEscolhida;
 	}
     
     

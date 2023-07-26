@@ -140,8 +140,7 @@ public class TelaProduto extends JFrame {
 				JOptionPane.showInternalMessageDialog(null, "Sem estoque disponível", "Carrinho", JOptionPane.ERROR_MESSAGE);
 			}else {
 				
-				cliente.getCarrinho().setQuantidade(Integer.parseInt(txQuantidade.getText()));
-				produto.setQuantidadeEestoque(produto.getQuantidadeEestoque() - Integer.parseInt(txQuantidade.getText()));
+				produto.setQuantidadeEscolhida(Integer.parseInt(txQuantidade.getText()));
 				cliente.getCarrinho().adicionarProduto(produto);
 				
 				if(txQuantidade.getText().equals("1")) {

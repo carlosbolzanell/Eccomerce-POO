@@ -24,11 +24,22 @@ public class Carrinho {
     public void setQuantidade(int quantidade) {
         this.quantidade += quantidade;
     }
+    
+    public ArrayList<Produto> getProdutos() {
+		return produtos;
+	}
 
-    public void adicionarProduto(Produto produto){
+	public void setProdutos(ArrayList<Produto> produtos) {
+		this.produtos = produtos;
+	}
+
+	public void adicionarProduto(Produto produto){
         produtos.add(produto);
     }
     public void removerProduto(Produto produto) {
     	produtos.remove(produto);
+    }
+    public void removerProduto2(int index) {
+    	produtos.remove(index);
     }
 }

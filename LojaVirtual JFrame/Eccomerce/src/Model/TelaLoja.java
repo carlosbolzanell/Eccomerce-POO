@@ -32,6 +32,8 @@ import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.ScrollPaneConstants;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class TelaLoja extends JFrame {
 
@@ -41,7 +43,7 @@ public class TelaLoja extends JFrame {
 	private static ArrayList<Produto> produtosM = new ArrayList<Produto>();
 	private static ArrayList<Produto> produtosEl = new ArrayList<Produto>();
 	private static ArrayList<Produto> produtosA = new ArrayList<Produto>();
-	private static Produto produto;
+	private static int clicadas=0;
 
 
 	/**
@@ -691,33 +693,276 @@ public class TelaLoja extends JFrame {
 			frame.setVisible(true);
 		});
 		
+		//Produtos da categoria Adega
+		
 		JPanel adega = new JPanel();
 		tbProdutos.addTab("Adega", null, adega, null);
+		adega.setLayout(null);
+		
+		JPanel produtosAdega = new JPanel();
+		produtosAdega.setLayout(null);
+		produtosAdega.setBounds(0, 0, 465, 235);
+		adega.add(produtosAdega);
+		
+		JPanel produto1A = new JPanel();
+		produto1A.setLayout(null);
+		produto1A.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		produto1A.setBounds(0, 5, 221, 68);
+		produtosAdega.add(produto1A);
+		
+		JLabel lbProduto1A = new JLabel(produtosA.get(0).getNome());
+		lbProduto1A.setHorizontalAlignment(SwingConstants.CENTER);
+		lbProduto1A.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 13));
+		lbProduto1A.setBounds(0, 3, 221, 14);
+		produto1A.add(lbProduto1A);
+		
+		JLabel fotoProduto1A = new JLabel("");
+		fotoProduto1A.setBounds(0, 11, 60, 54);
+		produto1A.add(fotoProduto1A);
+		
+		JLabel lbPrecoA = new JLabel("R$"+String.valueOf(produtosA.get(0).getValor()).replace(".", ","));
+		lbPrecoA.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lbPrecoA.setBounds(70, 20, 78, 33);
+		produto1A.add(lbPrecoA);
+		
+		JButton btProduto1A = new JButton("Ver Mais");
+		btProduto1A.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btProduto1A.setBounds(137, 42, 80, 23);
+		produto1A.add(btProduto1A);
+		
+		btProduto1A.addActionListener(e->{
+			TelaProduto frame = new TelaProduto(produtosA.get(0), cliente);
+			dispose();
+			frame.setVisible(true);
+		});
+		
+		JPanel produto2A = new JPanel();
+		produto2A.setLayout(null);
+		produto2A.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		produto2A.setBounds(244, 5, 221, 68);
+		produtosAdega.add(produto2A);
+		
+		JLabel lbProduto2A = new JLabel(produtosA.get(1).getNome());
+		lbProduto2A.setHorizontalAlignment(SwingConstants.CENTER);
+		lbProduto2A.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 13));
+		lbProduto2A.setBounds(0, 3, 217, 14);
+		produto2A.add(lbProduto2A);
+		
+		JLabel fotoProduto2A = new JLabel("");
+		fotoProduto2A.setBounds(2, 2, 60, 65);
+		produto2A.add(fotoProduto2A);
+		
+		JLabel lbPreco2A = new JLabel("R$"+String.valueOf(produtosA.get(1).getValor()).replace(".", ","));
+		lbPreco2A.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lbPreco2A.setBounds(70, 20, 78, 33);
+		produto2A.add(lbPreco2A);
+		
+		JButton btProduto2A = new JButton("Ver Mais");
+		btProduto2A.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btProduto2A.setBounds(137, 42, 80, 23);
+		produto2A.add(btProduto2A);
+		
+		btProduto2A.addActionListener(e->{
+			TelaProduto frame = new TelaProduto(produtosA.get(1), cliente);
+			dispose();
+			frame.setVisible(true);
+		});
+		
+		JPanel produto3A = new JPanel();
+		produto3A.setLayout(null);
+		produto3A.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		produto3A.setBounds(0, 84, 221, 68);
+		produtosAdega.add(produto3A);
+		
+		JLabel lbProduto3A = new JLabel(produtosA.get(2).getNome());
+		lbProduto3A.setHorizontalAlignment(SwingConstants.CENTER);
+		lbProduto3A.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 13));
+		lbProduto3A.setBounds(0, 4, 221, 14);
+		produto3A.add(lbProduto3A);
+		
+		JLabel fotoProduto3A = new JLabel("");
+		fotoProduto3A.setBounds(4, 11, 60, 54);
+		produto3A.add(fotoProduto3A);
+		
+		JLabel precoProduto3A = new JLabel("R$"+String.valueOf(produtosA.get(2).getValor()).replace(".", ","));
+		precoProduto3A.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		precoProduto3A.setBounds(70, 20, 78, 33);
+		produto3A.add(precoProduto3A);
+		
+		JButton btProduto3A = new JButton("Ver Mais");
+		btProduto3A.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btProduto3A.setBounds(137, 42, 80, 23);
+		produto3A.add(btProduto3A);
+		
+		btProduto3A.addActionListener(e->{
+			TelaProduto frame = new TelaProduto(produtosA.get(2), cliente);
+			dispose();
+			frame.setVisible(true);
+		});
+		
+		JPanel produto4A = new JPanel();
+		produto4A.setLayout(null);
+		produto4A.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		produto4A.setBounds(244, 84, 221, 68);
+		produtosAdega.add(produto4A);
+		
+		JLabel lbProduto4A = new JLabel(produtosA.get(3).getNome());
+		lbProduto4A.setHorizontalAlignment(SwingConstants.CENTER);
+		lbProduto4A.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 13));
+		lbProduto4A.setBounds(0, 4, 221, 14);
+		produto4A.add(lbProduto4A);
+		
+		JLabel fotoProduto4A = new JLabel("");
+		fotoProduto4A.setBounds(0, 2, 60, 65);
+		produto4A.add(fotoProduto4A);
+		
+		JLabel precoProduto4A = new JLabel("R$"+String.valueOf(produtosA.get(3).getValor()).replace(".", ","));
+		precoProduto4A.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		precoProduto4A.setBounds(70, 20, 78, 33);
+		produto4A.add(precoProduto4A);
+		
+		JButton btProduto4A = new JButton("Ver Mais");
+		btProduto4A.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btProduto4A.setBounds(137, 42, 80, 23);
+		produto4A.add(btProduto4A);
+		
+		btProduto4A.addActionListener(e->{
+			TelaProduto frame = new TelaProduto(produtosA.get(3), cliente);
+			dispose();
+			frame.setVisible(true);
+		});
+		
+		JPanel produto5A = new JPanel();
+		produto5A.setLayout(null);
+		produto5A.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		produto5A.setBounds(0, 163, 221, 68);
+		produtosAdega.add(produto5A);
+		
+		JLabel lbProduto5A = new JLabel(produtosA.get(4).getNome());
+		lbProduto5A.setHorizontalAlignment(SwingConstants.CENTER);
+		lbProduto5A.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 13));
+		lbProduto5A.setBounds(0, 4, 221, 14);
+		produto5A.add(lbProduto5A);
+		
+		JLabel fotoProduto5A = new JLabel("");
+		fotoProduto5A.setBounds(4, 11, 60, 54);
+		produto5A.add(fotoProduto5A);
+		
+		JLabel precoProduto5A = new JLabel("R$"+String.valueOf(produtosA.get(4).getValor()).replace(".", ","));
+		precoProduto5A.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		precoProduto5A.setBounds(70, 20, 78, 33);
+		produto5A.add(precoProduto5A);
+		
+		JButton btProduto5A = new JButton("Ver Mais");
+		btProduto5A.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btProduto5A.setBounds(137, 42, 80, 23);
+		produto5A.add(btProduto5A);
+		
+		btProduto5A.addActionListener(e->{
+			TelaProduto frame = new TelaProduto(produtosA.get(4), cliente);
+			dispose();
+			frame.setVisible(true);
+		});
+		
+		JPanel produto6A = new JPanel();
+		produto6A.setLayout(null);
+		produto6A.setBorder(new LineBorder(new Color(0, 0, 0), 1, true));
+		produto6A.setBounds(244, 163, 221, 68);
+		produtosAdega.add(produto6A);
+		
+		JLabel lbProduto6A = new JLabel(produtosA.get(5).getNome());
+		lbProduto6A.setHorizontalAlignment(SwingConstants.CENTER);
+		lbProduto6A.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 13));
+		lbProduto6A.setBounds(0, 4, 221, 14);
+		produto6A.add(lbProduto6A);
+		
+		JLabel fotoProduto6A = new JLabel("");
+		fotoProduto6A.setBounds(5, 11, 60, 54);
+		produto6A.add(fotoProduto6A);
+		
+		JLabel precoProduto6A = new JLabel("R$"+String.valueOf(produtosA.get(5).getValor()).replace(".", ","));
+		precoProduto6A.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		precoProduto6A.setBounds(70, 20, 78, 33);
+		produto6A.add(precoProduto6A);
+		
+		JButton btProduto6A = new JButton("Ver Mais");
+		btProduto6A.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btProduto6A.setBounds(137, 42, 80, 23);
+		produto6A.add(btProduto6A);
+		
+		btProduto6A.addActionListener(e->{
+			TelaProduto frame = new TelaProduto(produtosA.get(5), cliente);
+			dispose();
+			frame.setVisible(true);
+		});
+		
 		
 		JPanel pCarrinho = new JPanel();
 		pCarrinho.setBackground(new Color(255, 255, 255));
 		tabbedPane.addTab("Carrinho", null, pCarrinho, null);
 		pCarrinho.setLayout(null);
 		
-		JButton btnNewButton_1 = new JButton("New button");
-		btnNewButton_1.setBounds(369, 230, 89, 23);
-		pCarrinho.add(btnNewButton_1);
+		JButton btFinalizar = new JButton("Finalizar Compras");
+		btFinalizar.setBounds(299, 230, 159, 23);
+		pCarrinho.add(btFinalizar);
+		
+		btFinalizar.addActionListener(e->{
+			TelaFinalizar finaliz = new TelaFinalizar(cliente);
+			dispose();
+			finaliz.setVisible(true);
+		});
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 0, 468, 223);
 		pCarrinho.add(scrollPane);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"aa", "aa", "aa", "aa", null}
+		
+		String[] colunas = {"Produto", "Quantidade", "Pre\u00E7o", "Remover"};
+		
+		
+		
+		DefaultTableModel carrinhoCompras = new DefaultTableModel(colunas, 0);
+		
+		for(Produto prod : cliente.getCarrinho().getProdutos()) {
+			Object[] linhas = {prod.getNome(), prod.getQuantidadeEscolhida(), prod.getValor()*prod.getQuantidadeEscolhida(), null};
+			carrinhoCompras.addRow(linhas);
+		}
+		
+		table = new JTable(carrinhoCompras);
+		table.setEnabled(false);
+		
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int colunaClicada = table.columnAtPoint(e.getPoint());
+                int linhaClicada = table.rowAtPoint(e.getPoint());
+                
+                Object valorNome= table.getValueAt(linhaClicada, 0);
+                String nome = valorNome.toString();
+                
+                if (colunaClicada == 3) { // Índice da coluna "Remover"
+                	clicadas++;
+                	if(clicadas%2 == 0) {
+                		((DefaultTableModel) table.getModel()).removeRow(linhaClicada);
+                		removerProduto(nome, cliente);
+                	} 
+                }
+                
 				
-			},
-			new String[] {
-				"Produto", "Quantidade", "Pre\u00E7o Unit", "Pre\u00E7o", "Remover"
 			}
-		));
+		});
+		
+		
 		scrollPane.setViewportView(table);
+		
+		JButton btLimpar = new JButton("Limpar Carrinho");
+		btLimpar.setBounds(10, 230, 147, 23);
+		pCarrinho.add(btLimpar);
+		
+		btLimpar.addActionListener(e->{
+			carrinhoCompras.setRowCount(0);
+			cliente.getCarrinho().getProdutos().clear();
+		});
 		
 		JPanel pConta = new JPanel();
 		pConta.setBackground(new Color(255, 255, 255));
@@ -727,70 +972,80 @@ public class TelaLoja extends JFrame {
 		JLabel lbNome = new JLabel("Nome");
 		lbNome.setForeground(new Color(0, 0, 0));
 		lbNome.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 15));
-		lbNome.setBounds(36, 28, 46, 14);
+		lbNome.setBounds(21, 48, 46, 14);
 		pConta.add(lbNome);
 		
 		JLabel lbCpf = new JLabel("CPF");
 		lbCpf.setForeground(new Color(0, 0, 0));
 		lbCpf.setFont(new Font("Microsoft JhengHei Light", Font.PLAIN, 15));
-		lbCpf.setBounds(198, 27, 70, 14);
+		lbCpf.setBounds(198, 47, 70, 14);
 		pConta.add(lbCpf);
 		
 		JLabel lbDataN = new JLabel("Data de Nascimento");
 		lbDataN.setForeground(new Color(0, 0, 0));
 		lbDataN.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 15));
-		lbDataN.setBounds(36, 73, 152, 14);
+		lbDataN.setBounds(21, 105, 152, 14);
 		pConta.add(lbDataN);
 		
 		JLabel lbEmail = new JLabel("Email");
 		lbEmail.setForeground(new Color(0, 0, 0));
 		lbEmail.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 15));
-		lbEmail.setBounds(198, 73, 58, 14);
+		lbEmail.setBounds(198, 105, 58, 14);
 		pConta.add(lbEmail);
 		
 		JLabel lbUser = new JLabel("Usuário");
 		lbUser.setForeground(new Color(0, 0, 0));
 		lbUser.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 15));
-		lbUser.setBounds(36, 121, 58, 14);
+		lbUser.setBounds(21, 162, 58, 14);
 		pConta.add(lbUser);
 		
 		JButton btnEndereco = new JButton("Ver Endereços");
 		btnEndereco.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 15));
 		btnEndereco.setBackground(Color.WHITE);
-		btnEndereco.setBounds(306, 137, 152, 33);
+		btnEndereco.setBounds(306, 153, 152, 33);
 		pConta.add(btnEndereco);
 		
 		JButton btnEdit = new JButton("Editar");
 		btnEdit.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 15));
 		btnEdit.setBackground(Color.WHITE);
-		btnEdit.setBounds(306, 176, 152, 33);
+		btnEdit.setBounds(306, 197, 152, 33);
 		pConta.add(btnEdit);
 		
 		JLabel lbNomeC = new JLabel(cliente.getNome());
 		lbNomeC.setBackground(new Color(128, 255, 255));
-		lbNomeC.setBounds(36, 45, 152, 21);
+		lbNomeC.setBounds(21, 73, 152, 21);
 		pConta.add(lbNomeC);
 		
 		JLabel lbDataNC = new JLabel(cliente.getDataNascimento());
-		lbDataNC.setBounds(36, 92, 152, 21);
+		lbDataNC.setBounds(21, 130, 152, 21);
 		pConta.add(lbDataNC);
 		
 		JLabel lbUserC = new JLabel(cliente.getLogin());
-		lbUserC.setBounds(36, 137, 152, 21);
+		lbUserC.setBounds(21, 187, 152, 21);
 		pConta.add(lbUserC);
 		
 		JLabel lbCpfC = new JLabel(cliente.getCpf());
-		lbCpfC.setBounds(198, 45, 102, 21);
+		lbCpfC.setBounds(198, 73, 102, 21);
 		pConta.add(lbCpfC);
 		
 		JLabel lbEmailC = new JLabel(cliente.getEmail());
-		lbEmailC.setBounds(198, 92, 102, 21);
+		lbEmailC.setBounds(198, 130, 102, 21);
 		pConta.add(lbEmailC);
 		
 		JLabel icon = new JLabel("");
 		icon.setIcon(new ImageIcon("./assets/perfil.png"));
-		icon.setBounds(310, 0, 148, 132);
+		icon.setBounds(320, 0, 148, 132);
 		pConta.add(icon);
+		
+		JButton btSair = new JButton("Sair");
+		btSair.setBounds(10, 230, 89, 23);
+		pConta.add(btSair);
+		
+		btSair.addActionListener(e->{
+			TelaInicial frame = new TelaInicial();
+			dispose();
+			frame.setVisible(true);
+		});
 	}
 	
 	public void adicionarProdutos() {
@@ -833,5 +1088,32 @@ public class TelaLoja extends JFrame {
 		Produto impressora = new Produto("Impressora MultiFuncional PrintFast", "Impressora multifuncional que imprime, copia e digitaliza com alta velocidade e qualidade.", 499.00, "PrintFast 2022", "SwiftPrint", "Branco", "Impressoras", 40);
 		produtosEl.add(impressora);
 		
+		Produto gold = new Produto("Whisky Gold Label", "Whisky escocês envelhecido por 12 anos, com notas de carvalho, baunilha e frutas secas.", 199.00, "12 anos", "Highland Distillery", "Diversas", "Whiskies", 10);
+		produtosA.add(gold);
+		Produto absolute = new Produto("Vodka Premium", "Vodka destilada várias vezes para obter suavidade excepcional, perfeita para drinks e coquetéis.", 79.90, "Premium", "Crystal Spirits", "Transparente", "Vodkas", 20 );
+		produtosA.add(absolute);
+		Produto rum = new Produto("Rum Aged 8 anos", "Rum envelhecido por 8 anos em barris de carvalho, com sabores ricos de baunilha e caramelo.", 129.00, "Aged 8 anos", "Caribbean Rums", "Âmbar", "Runs", 15 );
+		produtosA.add(rum);
+		Produto gin = new Produto("Gin London Dry", "Gin tradicional estilo London Dry, com notas de zimbro e especiarias, perfeito para coquetéis clássicos.", 59.90, "London Dry", "Gin Masters", "Transparente", "Gins", 25);
+		produtosA.add(gin);
+		Produto tequila = new Produto("Tequila Reposado", "Tequila descansada em barris de carvalho para obter sabor suave e notas de agave caramelizado.", 69.50, "Reposado", "Agave Fields", "Dourado", "Tequilas", 30);
+		produtosA.add(tequila);
+		Produto ballantines = new Produto("Whisky Ballantine's Finest", "Um whisky blended escocês suave e equilibrado, com notas de mel, baunilha e toques de frutas.", 89.90, "Ballantine's", "-","Dourado", "Whisky", 20);
+		produtosA.add(ballantines);
+	}
+	
+	public void removerProduto(String nome, Clientes cliente) {
+		
+		if(cliente.getCarrinho().getProdutos().size() == 1) {
+			cliente.getCarrinho().removerProduto2(0);
+		}
+		
+		else{
+			for(Produto prod : cliente.getCarrinho().getProdutos()) {
+				if(prod.getNome().equals(nome)) {
+					cliente.getCarrinho().removerProduto(prod);
+				}
+			}
+		}
 	}
 }

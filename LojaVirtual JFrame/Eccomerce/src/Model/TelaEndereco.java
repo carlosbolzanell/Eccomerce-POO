@@ -5,11 +5,15 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import java.awt.Font;
+import java.text.ParseException;
+
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -25,25 +29,10 @@ public class TelaEndereco extends JFrame {
 	private JTextField txIdentificacao;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaEndereco frame = new TelaEndereco();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
+	 * @throws ParseException 
 	 */
-	public TelaEndereco() {
+	public TelaEndereco(Clientes cliente) throws ParseException {
 		setTitle("Novo Endereço");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -124,7 +113,10 @@ public class TelaEndereco extends JFrame {
 		btCadastro.setBounds(184, 206, 103, 32);
 		contentPane.add(btCadastro);
 		
-		JFormattedTextField txCep = new JFormattedTextField();
+		MaskFormatter cep = new MaskFormatter("#####-###");
+		cep.setPlaceholderCharacter('_');
+
+		JFormattedTextField txCep = new JFormattedTextField(cep);
 		txCep.setBounds(94, 63, 96, 20);
 		contentPane.add(txCep);
 		
@@ -133,6 +125,30 @@ public class TelaEndereco extends JFrame {
 		cbEstado.setModel(new DefaultComboBoxModel(new String[] {"Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"}));
 		cbEstado.setBounds(94, 157, 96, 22);
 		contentPane.add(cbEstado);
+		
+		btCadastro.addActionListener(e->{
+			
+			if(txIdentificacao.getText().equals("")) {
+				JOptionPane.showInternalMessageDialog(null, "Preencha o campo Identificação", "Erro", JOptionPane.ERROR_MESSAGE);
+			}else if(txCep.getText().equals("_____-___")) {
+				JOptionPane.showInternalMessageDialog(null, "Preencha o campo CEP!", "Erro", JOptionPane.ERROR_MESSAGE);
+			}else if(txRua.getText().equals("")) {
+				JOptionPane.showInternalMessageDialog(null, "Preencha o campo Rua!", "Erro", JOptionPane.ERROR_MESSAGE);
+			}else if(txCidade.getText().equals("")) {
+				JOptionPane.showInternalMessageDialog(null, "Preencha o campo Cidade!", "Erro", JOptionPane.ERROR_MESSAGE);
+			}else if(txNumero.getText().equals("")) {
+				JOptionPane.showInternalMessageDialog(null, "Preencha o campo Número!", "Erro", JOptionPane.ERROR_MESSAGE);
+			}else {
+				int numero = Integer.parseInt(txNumero.getText());
+				Endereco endereco1 = new Endereco(txIdentificacao.getText(), txRua.getText(), txCep.getText(), txCidade.getText(), cbEstado.getSelectedItem().toString() , numero , txCompl.getText());
+				cliente.addEndereco(endereco1);
+				JOptionPane.showInternalMessageDialog(null, "Endereço cadastrado", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+				dispose();
+			}
+			
+		});
+		
+		
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("./assets/azul.jpg"));

@@ -34,6 +34,7 @@ public class TelaCadastro extends JFrame {
 	private JPasswordField txSenha;
 	private JButton btnEndereco;
 	private JButton btnVoltar;
+	private static int clicadas = 0;
 	
 //	static TelaCadastro cadastro = new TelaCadastro() ;
 	
@@ -133,6 +134,18 @@ public class TelaCadastro extends JFrame {
 		btnEndereco.setBounds(244, 139, 152, 33);
 		contentPane.add(btnEndereco);
 		
+		btnEndereco.addActionListener(e->{
+			clicadas++;
+			TelaEndereco endereco;
+			try {
+				endereco = new TelaEndereco(cliente);
+				endereco.setVisible(true);
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			};
+		});
+		
 		btnVoltar = new JButton("Voltar");
 		btnVoltar.setBounds(274, 221, 89, 23);
 		contentPane.add(btnVoltar);
@@ -172,7 +185,8 @@ public class TelaCadastro extends JFrame {
 		        	JOptionPane.showInternalMessageDialog(null, "Preencha o campo login!", "Erro", JOptionPane.ERROR_MESSAGE);
 		        }else if(senha.length() == 0) {
 		        	JOptionPane.showInternalMessageDialog(null, "Preencha o campo senha!", "Erro", JOptionPane.ERROR_MESSAGE);
-		        	
+		        }else if (clicadas==0){
+		        	JOptionPane.showInternalMessageDialog(null, "Cadastre um Endereço", "Erro", JOptionPane.ERROR_MESSAGE);
 		        }else if (buscarCliente(cpf, clientes) == null && buscarCliente1(login, clientes) == null) {
 		            Clientes cadastrado = new Clientes(nome, dNasc, cpf, email, login, senha);
 		            clientes.add(cadastrado);
