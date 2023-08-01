@@ -72,7 +72,7 @@ public class TelaCadastro extends JFrame {
 		lbDataN.setBounds(35, 75, 152, 14);
 		contentPane.add(lbDataN);
 		
-		lbUser = new JLabel("Usu√°rio");
+		lbUser = new JLabel("Usu·rio");
 		lbUser.setForeground(new Color(255, 255, 255));
 		lbUser.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 15));
 		lbUser.setBounds(35, 123, 58, 14);
@@ -128,7 +128,7 @@ public class TelaCadastro extends JFrame {
 		btnCadastrar.setBounds(244, 177, 152, 33);
 		contentPane.add(btnCadastrar);
 		
-		btnEndereco = new JButton("Novo Endere√ßo");
+		btnEndereco = new JButton("Novo EndereÁo");
 		btnEndereco.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 15));
 		btnEndereco.setBackground(Color.WHITE);
 		btnEndereco.setBounds(244, 139, 152, 33);

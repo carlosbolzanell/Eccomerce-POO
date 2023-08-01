@@ -37,7 +37,7 @@ public class TelaLogin extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lbUser = new JLabel("Usu√°rio");
+		JLabel lbUser = new JLabel("Usu·rio");
 		lbUser.setForeground(Color.WHITE);
 		lbUser.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 15));
 		lbUser.setBounds(189, 61, 58, 14);
@@ -67,8 +67,8 @@ public class TelaLogin extends JFrame {
 		        
 		        boolean logado = false;
 		        for (Clientes log : clientes) {
-		            if (log.logar(login1, senha1).equals("Acesso efetuado")) {
-		                JOptionPane.showMessageDialog(null, log.logar(login1, senha1), "Acesso efetuado", JOptionPane.INFORMATION_MESSAGE);
+		            if (log.logar(login1, senha1).equals("1")) {
+		                JOptionPane.showMessageDialog(null, "Acesso Efetuado", "Acesso efetuado", JOptionPane.INFORMATION_MESSAGE);
 		                
 		                dispose();
 		                TelaLoja frame = new TelaLoja(log);

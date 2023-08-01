@@ -33,7 +33,7 @@ public class TelaInicial extends JFrame {
 		
 		JLabel lbTitulo = new JLabel("Bolzanell's Shop");
 		lbTitulo.setForeground(new Color(255, 255, 255));
-		lbTitulo.setFont(new Font("Bernard MT Condensed", Font.PLAIN, 30));
+		lbTitulo.setFont(new Font("Bernard MT Condensed", Font.PLAIN, 26));
 		lbTitulo.setBounds(123, 78, 187, 53);
 		contentPane.add(lbTitulo);
 		

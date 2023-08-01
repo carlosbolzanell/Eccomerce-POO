@@ -39,7 +39,7 @@ public class Carrinho {
     public void removerProduto(Produto produto) {
     	produtos.remove(produto);
     }
-    public void removerProduto2(int index) {
+    public void removerProduto(int index) {
     	produtos.remove(index);
     }
 }

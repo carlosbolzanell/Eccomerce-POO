@@ -287,7 +287,7 @@ public class TelaLoja extends JFrame {
 			frame.setVisible(true);
 		});
 		
-		//Página da Categoria Moda e Vestuário
+		//PÃ¡gina da Categoria Moda e VestuÃ¡rio
 		
 		JPanel moda = new JPanel();
 		tbProdutos.addTab("Moda e Vestuário", null, moda, null);
@@ -490,7 +490,7 @@ public class TelaLoja extends JFrame {
 			frame.setVisible(true);
 		});
 		
-		//Produtos da Categoria Eletrônicos
+		//Produtos da Categoria EletrÃ´nicos
 		
 		JPanel eletronicos = new JPanel();
 		tbProdutos.addTab("Eletrônicos", null, eletronicos, null);
@@ -907,9 +907,13 @@ public class TelaLoja extends JFrame {
 		pCarrinho.add(btFinalizar);
 		
 		btFinalizar.addActionListener(e->{
-			TelaFinalizar finaliz = new TelaFinalizar(cliente);
-			dispose();
-			finaliz.setVisible(true);
+			if(cliente.getCarrinho().getProdutos().size() == 0) {
+				JOptionPane.showMessageDialog(null, "Adicione Produtos ao Carrinho", "Erro", JOptionPane.ERROR_MESSAGE);
+			}else {
+				TelaFinalizar finaliz = new TelaFinalizar(cliente);
+				dispose();
+				finaliz.setVisible(true);	
+			}
 		});
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -917,7 +921,7 @@ public class TelaLoja extends JFrame {
 		pCarrinho.add(scrollPane);
 		
 		
-		String[] colunas = {"Produto", "Quantidade", "Pre\u00E7o", "Remover"};
+		String[] colunas = {"Produto", "Quantidade", "Preço", "Remover"};
 		
 		
 		
@@ -940,7 +944,7 @@ public class TelaLoja extends JFrame {
                 Object valorNome= table.getValueAt(linhaClicada, 0);
                 String nome = valorNome.toString();
                 
-                if (colunaClicada == 3) { // Índice da coluna "Remover"
+                if (colunaClicada == 3) { // Ã�ndice da coluna "Remover"
                 	clicadas++;
                 	if(clicadas%2 == 0) {
                 		((DefaultTableModel) table.getModel()).removeRow(linhaClicada);
@@ -993,13 +997,13 @@ public class TelaLoja extends JFrame {
 		lbEmail.setBounds(198, 105, 58, 14);
 		pConta.add(lbEmail);
 		
-		JLabel lbUser = new JLabel("Usuário");
+		JLabel lbUser = new JLabel("UsuÃ¡rio");
 		lbUser.setForeground(new Color(0, 0, 0));
 		lbUser.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 15));
 		lbUser.setBounds(21, 162, 58, 14);
 		pConta.add(lbUser);
 		
-		JButton btnEndereco = new JButton("Ver Endereços");
+		JButton btnEndereco = new JButton("Ver EndereÃ§os");
 		btnEndereco.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 15));
 		btnEndereco.setBackground(Color.WHITE);
 		btnEndereco.setBounds(306, 153, 152, 33);
@@ -1062,50 +1066,50 @@ public class TelaLoja extends JFrame {
 		Produto skate = new Produto("Skate", "Skate casual para iniciantes", 89.99, "Conceito Street", "Conceito", "Preto", "Esportes", 3);
 		produtosE.add(skate);
 		
-		Produto vestido = new Produto("Vestido Floral Primavera", "Um lindo vestido floral perfeito para a estação da primavera, com tecido leve e confortável.", 129.90, "Corte A-line", "FashionFlower", "Azul e branco", "Vestidos", 50);
+		Produto vestido = new Produto("Vestido Floral Primavera", "Um lindo vestido floral perfeito para a estaÃ§Ã£o da primavera, com tecido leve e confortÃ¡vel.", 129.90, "Corte A-line", "FashionFlower", "Azul e branco", "Vestidos", 50);
 		produtosM.add(vestido);
-		Produto camisa = new Produto("Camisa Polo Classic", "Camisa polo clássica e elegante, feita de algodão de alta qualidade para um visual sofisticado.", 79.99, "Slim Fit", "UrbaneStyle", "Preto", "Camisas", 30 );
+		Produto camisa = new Produto("Camisa Polo Classic", "Camisa polo clássica e elegante, feita de algodÃ£o de alta qualidade para um visual sofisticado.", 79.99, "Slim Fit", "UrbaneStyle", "Preto", "Camisas", 30 );
 		produtosM.add(camisa);
-		Produto calca = new Produto("Calça Jeans Comfort", "Calça jeans moderna com ajuste confortável, ideal para o dia a dia e momentos casuais.", 89.50, "Skinny", "DenimFlex", "Azul escuro", "Calças", 65);
+		Produto calca = new Produto("Calça Jeans Comfort", "Calça jeans moderna com ajuste confortável, ideal para o dia a dia e momentos casuais.", 89.50, "Skinny", "DenimFlex", "Azul escuro", "CalÃ§as", 65);
 		produtosM.add(calca);
-		Produto sapato  = new Produto("Sapato Social Elegance", "Sapato social elegante e refinado, confeccionado em couro legítimo para um toque de sofisticação.", 189.00, "Oxford", "ClassySteps", "Marrom", "Calçados", 20);
+		Produto sapato  = new Produto("Sapato Social Elegance", "Sapato social elegante e refinado, confeccionado em couro legÃ­timo para um toque de sofisticaÃ§Ã£o.", 189.00, "Oxford", "ClassySteps", "Marrom", "CalÃ§ados", 20);
 		produtosM.add(sapato);
-		Produto moletom = new Produto("Moletom Urban Style", "Moletom urbano com capuz, perfeito para os dias mais frios, oferecendo conforto e estilo.", 69.95, "Unissex", "StreetChic", "Cinza mescla", "Suéteres e Moletons", 45);
+		Produto moletom = new Produto("Moletom Urban Style", "Moletom urbano com capuz, perfeito para os dias mais frios, oferecendo conforto e estilo.", 69.95, "Unissex", "StreetChic", "Cinza mescla", "SuÃ©teres e Moletons", 45);
 		produtosM.add(moletom);
-		Produto bolsa = new Produto("Bolsa Tote Versatile", "Bolsa tote espaçosa e versátil, ótima para o dia a dia, com design moderno e diversos compartimentos.", 149.00, "Tote Bag", "FashionPlus", "Caramelo", "Bolsas", 25);
+		Produto bolsa = new Produto("Bolsa Tote Versatile", "Bolsa tote espaçosa e versátil, Ótima para o dia a dia, com design moderno e diversos compartimentos.", 149.00, "Tote Bag", "FashionPlus", "Caramelo", "Bolsas", 25);
 		produtosM.add(bolsa);
 		
-		Produto smartphone = new Produto("Smartphone TechMaster X10", "Um smartphone avançado com tela de alta resolução e desempenho poderoso.", 1799.00, "X10 Pro", "TechMaster", "Preto", "Smartphones", 30);
+		Produto smartphone = new Produto("Smartphone TechMaster X10", "Um smartphone avançado com tela de alta resoluÃ§Ã£o e desempenho poderoso.", 1799.00, "X10 Pro", "TechMaster", "Preto", "Smartphones", 30);
 		produtosEl.add(smartphone);
-		Produto notebook = new Produto("Notebook UltraBook Pro", "Notebook ultraleve e ultrarrápido, perfeito para produtividade e mobilidade.", 3299.00, "UltraBook Pro 13", "MaxTech", "Prata", "Notebooks", 20);
+		Produto notebook = new Produto("Notebook UltraBook Pro", "Notebook ultraleve e ultrarrÃ¡pido, perfeito para produtividade e mobilidade.", 3299.00, "UltraBook Pro 13", "MaxTech", "Prata", "Notebooks", 20);
 		produtosEl.add(notebook);
-		Produto fone = new Produto("Fone de Ouvido NoiseFree", "Fone de ouvido sem fio com cancelamento de ruído para uma experiência sonora imersiva.", 349.90, "NoiseFree 500", "SoundWave", "Preto", "Fones de Ouvido", 50);
+		Produto fone = new Produto("Fone de Ouvido NoiseFree", "Fone de ouvido sem fio com cancelamento de ruÃ­do para uma experiÃªncia sonora imersiva.", 349.90, "NoiseFree 500", "SoundWave", "Preto", "Fones de Ouvido", 50);
 		produtosEl.add(fone);
 		Produto tv = new Produto("Smart TV VisionPlus 55", "Smart TV com tela 4K e acesso a aplicativos de streaming, proporcionando entretenimento de qualidade.", 2999.00, "VisionPlus 55A", "TechVision", "Cinza", "Smart TVs", 15);
 		produtosEl.add(tv);
-		Produto camera = new Produto("Câmera Digital ShotMaster", "Câmera digital de alta resolução com recursos avançados para capturar momentos especiais.", 1199.00, "ShotMaster 500X", "PixelPerfect", "Prata", "Câmeras Digitais", 25);
+		Produto camera = new Produto("Câmera Digital ShotMaster", "Câmera digital de alta resolução com recursos avanÃ§ados para capturar momentos especiais.", 1199.00, "ShotMaster 500X", "PixelPerfect", "Prata", "CÃ¢meras Digitais", 25);
 		produtosEl.add(camera);
 		Produto impressora = new Produto("Impressora MultiFuncional PrintFast", "Impressora multifuncional que imprime, copia e digitaliza com alta velocidade e qualidade.", 499.00, "PrintFast 2022", "SwiftPrint", "Branco", "Impressoras", 40);
 		produtosEl.add(impressora);
 		
 		Produto gold = new Produto("Whisky Gold Label", "Whisky escocês envelhecido por 12 anos, com notas de carvalho, baunilha e frutas secas.", 199.00, "12 anos", "Highland Distillery", "Diversas", "Whiskies", 10);
 		produtosA.add(gold);
-		Produto absolute = new Produto("Vodka Premium", "Vodka destilada várias vezes para obter suavidade excepcional, perfeita para drinks e coquetéis.", 79.90, "Premium", "Crystal Spirits", "Transparente", "Vodkas", 20 );
+		Produto absolute = new Produto("Vodka Premium", "Vodka destilada várias vezes para obter suavidade excepcional, perfeita para drinks e coquetÃ©is.", 79.90, "Premium", "Crystal Spirits", "Transparente", "Vodkas", 20 );
 		produtosA.add(absolute);
-		Produto rum = new Produto("Rum Aged 8 anos", "Rum envelhecido por 8 anos em barris de carvalho, com sabores ricos de baunilha e caramelo.", 129.00, "Aged 8 anos", "Caribbean Rums", "Âmbar", "Runs", 15 );
+		Produto rum = new Produto("Rum Aged 8 anos", "Rum envelhecido por 8 anos em barris de carvalho, com sabores ricos de baunilha e caramelo.", 129.00, "Aged 8 anos", "Caribbean Rums", "Ã‚mbar", "Runs", 15 );
 		produtosA.add(rum);
-		Produto gin = new Produto("Gin London Dry", "Gin tradicional estilo London Dry, com notas de zimbro e especiarias, perfeito para coquetéis clássicos.", 59.90, "London Dry", "Gin Masters", "Transparente", "Gins", 25);
+		Produto gin = new Produto("Gin London Dry", "Gin tradicional estilo London Dry, com notas de zimbro e especiarias, perfeito para coquetÃ©is clÃ¡ssicos.", 59.90, "London Dry", "Gin Masters", "Transparente", "Gins", 25);
 		produtosA.add(gin);
 		Produto tequila = new Produto("Tequila Reposado", "Tequila descansada em barris de carvalho para obter sabor suave e notas de agave caramelizado.", 69.50, "Reposado", "Agave Fields", "Dourado", "Tequilas", 30);
 		produtosA.add(tequila);
-		Produto ballantines = new Produto("Whisky Ballantine's Finest", "Um whisky blended escocês suave e equilibrado, com notas de mel, baunilha e toques de frutas.", 89.90, "Ballantine's", "-","Dourado", "Whisky", 20);
+		Produto ballantines = new Produto("Whisky Ballantine's Finest", "Um whisky blended escocÃªs suave e equilibrado, com notas de mel, baunilha e toques de frutas.", 89.90, "Ballantine's", "-","Dourado", "Whisky", 20);
 		produtosA.add(ballantines);
 	}
 	
 	public void removerProduto(String nome, Clientes cliente) {
 		
 		if(cliente.getCarrinho().getProdutos().size() == 1) {
-			cliente.getCarrinho().removerProduto2(0);
+			cliente.getCarrinho().getProdutos().clear();
 		}
 		
 		else{

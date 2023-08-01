@@ -163,11 +163,9 @@ public class Clientes {
 		this.carrinho = carrinho;
 	}
 
-	/** Metodo para retornar o nome da categoria para o objeto
-     * @return String*/
     public String logar(String cadastro, String password){
         if (cadastro.equals(login) && password.equals(senha)) {
-            return "Acesso efetuado";
+            return "1";
         }
         return "2";
 
