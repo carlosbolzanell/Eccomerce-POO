@@ -144,6 +144,8 @@ public class TelaEndereco extends JFrame {
 				cliente.addEndereco(endereco1);
 				JOptionPane.showInternalMessageDialog(null, "Endereço cadastrado", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
 				dispose();
+				TelaInicial frame = new TelaInicial();
+				frame.setVisible(true);
 			}
 			
 		});

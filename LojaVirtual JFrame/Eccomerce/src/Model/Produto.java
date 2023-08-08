@@ -19,9 +19,10 @@ public class Produto {
     private String cor;
     private int quantidadeEestoque;
     private int quantidadeEscolhida;
+    private String imagem;
 
     /** Construtor para inicializar o obejo com os atibutos atribuidos */
-    public Produto(String nome, String descricao, double valor, String modelo, String marca, String cor, String categoria, int quantidadeEestoque) {
+    public Produto(String nome, String descricao, double valor, String modelo, String marca, String cor, String categoria, int quantidadeEestoque, String imagem) {
         this.nome = nome;
         this.descricao = descricao;
         this.valor = valor;
@@ -30,6 +31,7 @@ public class Produto {
         this.cor = cor;
         this.categoria = categoria;
         this.quantidadeEestoque = quantidadeEestoque;
+        this.imagem = imagem;
     }
 
     public Produto() {
@@ -163,6 +165,14 @@ public class Produto {
 
 	public void setQuantidadeEscolhida(int quantidadeEscolhida) {
 		this.quantidadeEscolhida = quantidadeEscolhida;
+	}
+
+	public String getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
 	}
     
     

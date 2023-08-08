@@ -128,24 +128,6 @@ public class TelaCadastro extends JFrame {
 		btnCadastrar.setBounds(244, 177, 152, 33);
 		contentPane.add(btnCadastrar);
 		
-		btnEndereco = new JButton("Novo EndereÁo");
-		btnEndereco.setFont(new Font("Microsoft JhengHei UI Light", Font.PLAIN, 15));
-		btnEndereco.setBackground(Color.WHITE);
-		btnEndereco.setBounds(244, 139, 152, 33);
-		contentPane.add(btnEndereco);
-		
-		btnEndereco.addActionListener(e->{
-			clicadas++;
-			TelaEndereco endereco;
-			try {
-				endereco = new TelaEndereco(cliente);
-				endereco.setVisible(true);
-			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			};
-		});
-		
 		btnVoltar = new JButton("Voltar");
 		btnVoltar.setBounds(274, 221, 89, 23);
 		contentPane.add(btnVoltar);
@@ -185,15 +167,19 @@ public class TelaCadastro extends JFrame {
 		        	JOptionPane.showInternalMessageDialog(null, "Preencha o campo login!", "Erro", JOptionPane.ERROR_MESSAGE);
 		        }else if(senha.length() == 0) {
 		        	JOptionPane.showInternalMessageDialog(null, "Preencha o campo senha!", "Erro", JOptionPane.ERROR_MESSAGE);
-		        }else if (clicadas==0){
-		        	JOptionPane.showInternalMessageDialog(null, "Cadastre um Endere√ßo", "Erro", JOptionPane.ERROR_MESSAGE);
 		        }else if (buscarCliente(cpf, clientes) == null && buscarCliente1(login, clientes) == null) {
 		            Clientes cadastrado = new Clientes(nome, dNasc, cpf, email, login, senha);
 		            clientes.add(cadastrado);
 		            JOptionPane.showInternalMessageDialog(null, "Cadastro Efetuado", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
 		            dispose();
-		            TelaInicial telaInit = new TelaInicial();
-				    telaInit.setVisible(true);
+		            TelaEndereco endereco;
+					try {
+						endereco = new TelaEndereco(cadastrado);
+						endereco.setVisible(true);
+					} catch (ParseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 		        } else {
 		            JOptionPane.showInternalMessageDialog(null, "Cliente Existente!", "Cadastro", JOptionPane.WARNING_MESSAGE);
 		        }

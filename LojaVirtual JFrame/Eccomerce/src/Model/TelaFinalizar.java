@@ -30,6 +30,7 @@ public class TelaFinalizar extends JFrame {
 	private double numeroAleatorio = (double) (Math.random() * 31);
 	private double casasDecimais = Math.pow(10, 2);
 	private double frete = Math.round(numeroAleatorio * casasDecimais) / casasDecimais;
+	private static Endereco enderecoSelec = new Endereco();
 	
 
 	/**
@@ -45,13 +46,13 @@ public class TelaFinalizar extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel compra = new JPanel();
-		compra.setBounds(216, 0, 218, 261);
+		compra.setBounds(210, 0, 236, 261);
 		contentPane.add(compra);
 		compra.setLayout(null);
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Boleto Bancário", "Pix", "Cartão de Crédito", "Cartão de Débito"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Boleto Banc\u00E1rio", "Pix", "Cart\u00E3o de Cr\u00E9dito", "Cart\u00E3o de D\u00E9bito"}));
 		comboBox.setBounds(8, 103, 112, 22);
 		compra.add(comboBox);
 		
@@ -96,31 +97,38 @@ public class TelaFinalizar extends JFrame {
 		
 		JButton btnNewButton = new JButton("Comprar");
 		btnNewButton.setBackground(new Color(128, 255, 0));
-		btnNewButton.setBounds(45, 192, 129, 33);
+		btnNewButton.setBounds(122, 178, 106, 33);
 		compra.add(btnNewButton);
-		
-		btnNewButton.addActionListener(e->{
-			JOptionPane.showMessageDialog(null, "Compra Efetuada com sucesso!", "Bolzanell's Shop", JOptionPane.PLAIN_MESSAGE);
-			atualizarEstoque(cliente);
-			cliente.getCarrinho().getProdutos().clear();
-			
-			dispose();
-		});
 		
 		JButton btnNewButton_1 = new JButton("Cancelar");
 		btnNewButton_1.setBackground(new Color(255, 0, 0));
-		btnNewButton_1.setBounds(45, 228, 129, 33);
+		btnNewButton_1.setBounds(122, 228, 106, 33);
 		compra.add(btnNewButton_1);
 		
 		
 		JLabel lblNewLabel_3 = new JLabel("Parcelamento");
-		lblNewLabel_3.setBounds(10, 131, 87, 14);
+		lblNewLabel_3.setBounds(8, 178, 87, 14);
 		compra.add(lblNewLabel_3);
 		
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"1x (R$"+(Math.round(valorTotal* casasDecimais) / casasDecimais)+")", "2x (R$"+(Math.round((valorTotal/2)* casasDecimais) / casasDecimais)+")", "3x (R$"+(Math.round((valorTotal/3)* casasDecimais) / casasDecimais)+")", "4x (R$"+(Math.round((valorTotal/4)* casasDecimais) / casasDecimais)+")", "5x (R$"+(Math.round((valorTotal/5)* casasDecimais) / casasDecimais)+")", "6x (R$"+(Math.round((valorTotal/6)* casasDecimais) / casasDecimais)+")", "7x (R$"+(Math.round((valorTotal/7)* casasDecimais) / casasDecimais)+")", "8x (R$"+(Math.round((valorTotal/8)* casasDecimais) / casasDecimais)+")", "9x (R$"+(Math.round((valorTotal/9)* casasDecimais) / casasDecimais)+")", "10x (R$"+(Math.round((valorTotal/10)* casasDecimais) / casasDecimais)+")"}));
-		comboBox_1.setBounds(102, 127, 106, 22);
+		comboBox_1.setBounds(8, 193, 100, 22);
 		compra.add(comboBox_1);
+		
+		JLabel lblNewLabel_4 = new JLabel("Endere\u00E7o");
+		lblNewLabel_4.setBounds(10, 129, 49, 14);
+		compra.add(lblNewLabel_4);
+		
+		String[] enderecos = new String[cliente.getEnderecos().size()];
+		int i = 0;
+		for(Endereco end : cliente.getEnderecos()){
+			enderecos[i] = end.getIndentificacao(); 
+			i++;
+		}
+		
+		JComboBox comboBox_1_1 = new JComboBox(enderecos);
+		comboBox_1_1.setBounds(8, 144, 112, 22);
+		compra.add(comboBox_1_1);
 		
 		
 		btnNewButton_1.addActionListener(e->{
@@ -137,7 +145,7 @@ public class TelaFinalizar extends JFrame {
 		DefaultListModel<String> modeloLista = new DefaultListModel<>();
 		
 		for(Produto prod : cliente.getCarrinho().getProdutos()) {
-			modeloLista.addElement("•Produto: "+prod.getNome());
+			modeloLista.addElement("*Produto: "+prod.getNome());
 			modeloLista.addElement("Quantidade: "+ prod.getQuantidadeEscolhida());
 			modeloLista.addElement("Valor Final: R$"+ prod.getValor()*prod.getQuantidadeEscolhida());
 			modeloLista.addElement(" ");
@@ -145,6 +153,23 @@ public class TelaFinalizar extends JFrame {
 		
 		JList<String> list = new JList<String>(modeloLista);
 		scrollPane_1.setViewportView(list);
+		
+		String indent = comboBox_1_1.getSelectedItem().toString();
+		
+		for(Endereco end : cliente.getEnderecos()) {
+			if(indent.equals(end.getIndentificacao())) {
+				enderecoSelec = end;
+			}
+		}
+		
+		btnNewButton.addActionListener(e->{
+			dispose();
+			TelaNota nota = new TelaNota(cliente, enderecoSelec , valorFinal);
+			nota.setVisible(true);
+			atualizarEstoque(cliente);
+			cliente.getCarrinho().getProdutos().clear();
+			
+		});
 	}
 	
 	public void atualizarEstoque(Clientes cliente) {

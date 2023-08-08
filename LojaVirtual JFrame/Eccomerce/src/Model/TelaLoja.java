@@ -82,12 +82,15 @@ public class TelaLoja extends JFrame {
 		tbProdutos.addTab("Esportes", null, esportes, null);
 		esportes.setLayout(null);
 		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(0, 0, 465, 235);
+		esportes.add(scrollPane_1);
+		
 		//Produtos da Categoria Esportes
 		
 		JPanel produtosEsporte = new JPanel();
+		scrollPane_1.setViewportView(produtosEsporte);
 		produtosEsporte.setLayout(null);
-		produtosEsporte.setBounds(0, 0, 465, 235);
-		esportes.add(produtosEsporte);
 		
 		JPanel produto1E = new JPanel();
 		produto1E.setLayout(null);
@@ -102,7 +105,7 @@ public class TelaLoja extends JFrame {
 		produto1E.add(lbProduto1E);
 		
 		JLabel fotoProduto1E = new JLabel();
-		fotoProduto1E.setIcon(new ImageIcon("./assets/bolaBasquete.png"));
+		fotoProduto1E.setIcon(new ImageIcon(produtosE.get(0).getImagem()));
 		fotoProduto1E.setBounds(0, 11, 60, 54);
 		produto1E.add(fotoProduto1E);
 		
@@ -135,7 +138,7 @@ public class TelaLoja extends JFrame {
 		produto2E.add(lbProduto2E);
 		
 		JLabel fotoProduto2E = new JLabel();
-		fotoProduto2E.setIcon(new ImageIcon("./assets/vasco.png"));
+		fotoProduto2E.setIcon(new ImageIcon(produtosE.get(1).getImagem()));
 		fotoProduto2E.setBounds(2, 2, 60, 65);
 		produto2E.add(fotoProduto2E);
 		
@@ -168,7 +171,7 @@ public class TelaLoja extends JFrame {
 		produto3E.add(lbProduto3E);
 		
 		JLabel fotoProduto3E = new JLabel();
-		fotoProduto3E.setIcon(new ImageIcon("./assets/tenis.png"));
+		fotoProduto3E.setIcon(new ImageIcon(produtosE.get(2).getImagem()));
 		fotoProduto3E.setBounds(4, 11, 60, 54);
 		produto3E.add(fotoProduto3E);
 		
@@ -200,8 +203,8 @@ public class TelaLoja extends JFrame {
 		lbProduto4E.setBounds(0, 4, 221, 14);
 		produto4E.add(lbProduto4E);
 		
-		JLabel fotoProduto4E = new JLabel("");
-		fotoProduto4E.setIcon(new ImageIcon("./assets/boxe.png"));
+		JLabel fotoProduto4E = new JLabel();
+		fotoProduto4E.setIcon(new ImageIcon(produtosE.get(3).getImagem()));
 		fotoProduto4E.setBounds(0, 2, 60, 65);
 		produto4E.add(fotoProduto4E);
 		
@@ -233,8 +236,8 @@ public class TelaLoja extends JFrame {
 		lbProduto5E.setBounds(0, 4, 221, 14);
 		produto5E.add(lbProduto5E);
 		
-		JLabel fotoProduto5E = new JLabel("");
-		fotoProduto5E.setIcon(new ImageIcon("./assets/tenisN.png"));
+		JLabel fotoProduto5E = new JLabel();
+		fotoProduto5E.setIcon(new ImageIcon(produtosE.get(4).getImagem()));
 		fotoProduto5E.setBounds(4, 11, 60, 54);
 		produto5E.add(fotoProduto5E);
 		
@@ -266,8 +269,8 @@ public class TelaLoja extends JFrame {
 		lbProduto6E.setBounds(0, 4, 221, 14);
 		produto6E.add(lbProduto6E);
 		
-		JLabel fotoProduto6E = new JLabel("");
-		fotoProduto6E.setIcon(new ImageIcon("./assets/skate.png"));
+		JLabel fotoProduto6E = new JLabel();
+		fotoProduto6E.setIcon(new ImageIcon(produtosE.get(5).getImagem()));
 		fotoProduto6E.setBounds(5, 11, 60, 54);
 		produto6E.add(fotoProduto6E);
 		
@@ -310,7 +313,8 @@ public class TelaLoja extends JFrame {
 		lbProduto1.setBounds(0, 3, 221, 14);
 		produto1.add(lbProduto1);
 		
-		JLabel fotoProduto1 = new JLabel("");
+		JLabel fotoProduto1 = new JLabel();
+		fotoProduto1.setIcon(new ImageIcon(produtosM.get(0).getImagem()));
 		fotoProduto1.setBounds(0, 11, 60, 54);
 		produto1.add(fotoProduto1);
 		
@@ -342,7 +346,8 @@ public class TelaLoja extends JFrame {
 		lbProduto2.setBounds(0, 3, 217, 14);
 		produto2.add(lbProduto2);
 		
-		JLabel fotoProduto2 = new JLabel("");
+		JLabel fotoProduto2 = new JLabel();
+		fotoProduto2.setIcon(new ImageIcon(produtosM.get(1).getImagem()));
 		fotoProduto2.setBounds(2, 2, 60, 65);
 		produto2.add(fotoProduto2);
 		
@@ -374,7 +379,8 @@ public class TelaLoja extends JFrame {
 		lbProduto3.setBounds(0, 4, 221, 14);
 		produto3.add(lbProduto3);
 		
-		JLabel fotoProduto3 = new JLabel("");
+		JLabel fotoProduto3 = new JLabel();
+		fotoProduto3.setIcon(new ImageIcon(produtosM.get(2).getImagem()));
 		fotoProduto3.setBounds(4, 11, 60, 54);
 		produto3.add(fotoProduto3);
 		
@@ -406,7 +412,8 @@ public class TelaLoja extends JFrame {
 		lbProduto4.setBounds(0, 4, 221, 14);
 		produto4.add(lbProduto4);
 		
-		JLabel fotoProduto4 = new JLabel("");
+		JLabel fotoProduto4 = new JLabel();
+		fotoProduto4.setIcon(new ImageIcon(produtosM.get(3).getImagem()));
 		fotoProduto4.setBounds(0, 2, 60, 65);
 		produto4.add(fotoProduto4);
 		
@@ -438,7 +445,8 @@ public class TelaLoja extends JFrame {
 		lbProduto5.setBounds(0, 4, 221, 14);
 		produto5.add(lbProduto5);
 		
-		JLabel fotoProduto5 = new JLabel("");
+		JLabel fotoProduto5 = new JLabel();
+		fotoProduto5.setIcon(new ImageIcon(produtosM.get(4).getImagem()));
 		fotoProduto5.setBounds(4, 11, 60, 54);
 		produto5.add(fotoProduto5);
 		
@@ -470,7 +478,8 @@ public class TelaLoja extends JFrame {
 		lbProduto6.setBounds(0, 4, 221, 14);
 		produto6.add(lbProduto6);
 		
-		JLabel fotoProduto6 = new JLabel("");
+		JLabel fotoProduto6 = new JLabel();
+		fotoProduto6.setIcon(new ImageIcon(produtosM.get(5).getImagem()));
 		fotoProduto6.setBounds(5, 11, 60, 54);
 		produto6.add(fotoProduto6);
 		
@@ -514,6 +523,7 @@ public class TelaLoja extends JFrame {
 		produto1El.add(lbProduto1El);
 		
 		JLabel fotoProdutoEl = new JLabel("");
+		fotoProdutoEl.setIcon(new ImageIcon(produtosEl.get(0).getImagem()));
 		fotoProdutoEl.setBounds(0, 11, 60, 54);
 		produto1El.add(fotoProdutoEl);
 		
@@ -546,6 +556,7 @@ public class TelaLoja extends JFrame {
 		produto2El.add(lbProduto2El);
 		
 		JLabel fotoProduto2El = new JLabel("");
+		fotoProduto2El.setIcon(new ImageIcon(produtosEl.get(1).getImagem()));
 		fotoProduto2El.setBounds(2, 2, 60, 65);
 		produto2El.add(fotoProduto2El);
 		
@@ -578,6 +589,7 @@ public class TelaLoja extends JFrame {
 		produto3El.add(lbProduto3El);
 		
 		JLabel fotoProduto3El = new JLabel("");
+		fotoProduto3El.setIcon(new ImageIcon(produtosEl.get(2).getImagem()));
 		fotoProduto3El.setBounds(4, 11, 60, 54);
 		produto3El.add(fotoProduto3El);
 		
@@ -610,6 +622,7 @@ public class TelaLoja extends JFrame {
 		produto4El.add(lbProduto4El);
 		
 		JLabel fotoProduto4El = new JLabel("");
+		fotoProduto4El.setIcon(new ImageIcon(produtosEl.get(3).getImagem()));
 		fotoProduto4El.setBounds(0, 2, 60, 65);
 		produto4El.add(fotoProduto4El);
 		
@@ -642,6 +655,7 @@ public class TelaLoja extends JFrame {
 		produto5El.add(lbProduto5El);
 		
 		JLabel fotoProduto5El = new JLabel("");
+		fotoProduto5El.setIcon(new ImageIcon(produtosEl.get(4).getImagem()));
 		fotoProduto5El.setBounds(4, 11, 60, 54);
 		produto5El.add(fotoProduto5El);
 		
@@ -674,6 +688,7 @@ public class TelaLoja extends JFrame {
 		produto6El.add(lbProduto6El);
 		
 		JLabel fotoProduto6El = new JLabel("");
+		fotoProduto6El.setIcon(new ImageIcon(produtosEl.get(5).getImagem()));
 		fotoProduto6El.setBounds(5, 11, 60, 54);
 		produto6El.add(fotoProduto6El);
 		
@@ -717,6 +732,7 @@ public class TelaLoja extends JFrame {
 		produto1A.add(lbProduto1A);
 		
 		JLabel fotoProduto1A = new JLabel("");
+		fotoProduto1A.setIcon(new ImageIcon(produtosA.get(0).getImagem()));
 		fotoProduto1A.setBounds(0, 11, 60, 54);
 		produto1A.add(fotoProduto1A);
 		
@@ -749,6 +765,7 @@ public class TelaLoja extends JFrame {
 		produto2A.add(lbProduto2A);
 		
 		JLabel fotoProduto2A = new JLabel("");
+		fotoProduto2A.setIcon(new ImageIcon(produtosA.get(1).getImagem()));
 		fotoProduto2A.setBounds(2, 2, 60, 65);
 		produto2A.add(fotoProduto2A);
 		
@@ -781,6 +798,7 @@ public class TelaLoja extends JFrame {
 		produto3A.add(lbProduto3A);
 		
 		JLabel fotoProduto3A = new JLabel("");
+		fotoProduto3A.setIcon(new ImageIcon(produtosA.get(2).getImagem()));
 		fotoProduto3A.setBounds(4, 11, 60, 54);
 		produto3A.add(fotoProduto3A);
 		
@@ -813,6 +831,7 @@ public class TelaLoja extends JFrame {
 		produto4A.add(lbProduto4A);
 		
 		JLabel fotoProduto4A = new JLabel("");
+		fotoProduto4A.setIcon(new ImageIcon(produtosA.get(3).getImagem()));
 		fotoProduto4A.setBounds(0, 2, 60, 65);
 		produto4A.add(fotoProduto4A);
 		
@@ -845,6 +864,7 @@ public class TelaLoja extends JFrame {
 		produto5A.add(lbProduto5A);
 		
 		JLabel fotoProduto5A = new JLabel("");
+		fotoProduto5A.setIcon(new ImageIcon(produtosA.get(4).getImagem()));
 		fotoProduto5A.setBounds(4, 11, 60, 54);
 		produto5A.add(fotoProduto5A);
 		
@@ -877,6 +897,7 @@ public class TelaLoja extends JFrame {
 		produto6A.add(lbProduto6A);
 		
 		JLabel fotoProduto6A = new JLabel("");
+		fotoProduto6A.setIcon(new ImageIcon(produtosA.get(5).getImagem()));
 		fotoProduto6A.setBounds(5, 11, 60, 54);
 		produto6A.add(fotoProduto6A);
 		
@@ -1053,56 +1074,56 @@ public class TelaLoja extends JFrame {
 	}
 	
 	public void adicionarProdutos() {
-		Produto bolaBasquete = new Produto("Bola de Basquete", "Bola de basquete Casual", 59.90, "Penalty Oficial", "Penalty", "Laranja", "Esportes", 4);
+		Produto bolaBasquete = new Produto("Bola de Basquete", "Bola de basquete Casual", 59.90, "Penalty Oficial", "Penalty", "Laranja", "Esportes", 4, "./assets/bolaBasquete.png");
 		produtosE.add(bolaBasquete);
-		Produto camisaVasco = new Produto("Camisa do Vasco", "Camisa do Vasco tamanho G", 125.00, "21/22", "Kappa", "Branca", "Esportes", 5);
+		Produto camisaVasco = new Produto("Camisa do Vasco", "Camisa do Vasco tamanho G", 125.00, "21/22", "Kappa", "Branca", "Esportes", 5, "./assets/vasco.png");
 		produtosE.add(camisaVasco);
-		Produto raqueteTenis = new Produto("Raquete de Tênis", "Raquete Profissional para Campeonatos", 119.90, "Babolat Pure Aero", "Babolet", "Azul", "Esportes", 7);
+		Produto raqueteTenis = new Produto("Raquete de Tênis", "Raquete Profissional para Campeonatos", 119.90, "Babolat Pure Aero", "Babolet", "Azul", "Esportes", 7, "./assets/tenis.png");
 		produtosE.add(raqueteTenis);
-		Produto luvasBoxe = new Produto("Luvas de Boxe", "Luvas Profissionais", 239.90, "Adidas Beat", "Adidas", "Azul", "Esportes", 2);
+		Produto luvasBoxe = new Produto("Luvas de Boxe", "Luvas Profissionais", 239.90, "Adidas Beat", "Adidas", "Azul", "Esportes", 2, "./assets/boxe.png");
 		produtosE.add(luvasBoxe);
-		Produto tenisNike = new Produto("Tênis Nike", "Tênis Nike para corrida", 320.00, "Nike Shoks Speed", "Nike", "Preto", "Esportes", 4);
+		Produto tenisNike = new Produto("Tênis Nike", "Tênis Nike para corrida", 320.00, "Nike Shoks Speed", "Nike", "Preto", "Esportes", 4, "./assets/tenisN.png");
 		produtosE.add(tenisNike);
-		Produto skate = new Produto("Skate", "Skate casual para iniciantes", 89.99, "Conceito Street", "Conceito", "Preto", "Esportes", 3);
+		Produto skate = new Produto("Skate", "Skate casual para iniciantes", 89.99, "Conceito Street", "Conceito", "Preto", "Esportes", 3, "./assets/skate.png");
 		produtosE.add(skate);
 		
-		Produto vestido = new Produto("Vestido Floral Primavera", "Um lindo vestido floral perfeito para a estaÃ§Ã£o da primavera, com tecido leve e confortÃ¡vel.", 129.90, "Corte A-line", "FashionFlower", "Azul e branco", "Vestidos", 50);
+		Produto vestido = new Produto("Vestido Floral Primavera", "Um lindo vestido floral perfeito para a estaÃ§Ã£o da primavera, com tecido leve e confortÃ¡vel.", 129.90, "Corte A-line", "FashionFlower", "Azul e branco", "Vestidos", 50, "./assets/vestido.png");
 		produtosM.add(vestido);
-		Produto camisa = new Produto("Camisa Polo Classic", "Camisa polo clássica e elegante, feita de algodÃ£o de alta qualidade para um visual sofisticado.", 79.99, "Slim Fit", "UrbaneStyle", "Preto", "Camisas", 30 );
+		Produto camisa = new Produto("Camisa Polo Classic", "Camisa polo clássica e elegante, feita de algodÃ£o de alta qualidade para um visual sofisticado.", 79.99, "Slim Fit", "UrbaneStyle", "Preto", "Camisas", 30, "./assets/camisa.png" );
 		produtosM.add(camisa);
-		Produto calca = new Produto("Calça Jeans Comfort", "Calça jeans moderna com ajuste confortável, ideal para o dia a dia e momentos casuais.", 89.50, "Skinny", "DenimFlex", "Azul escuro", "CalÃ§as", 65);
+		Produto calca = new Produto("Calça Jeans Comfort", "Calça jeans moderna com ajuste confortável, ideal para o dia a dia e momentos casuais.", 89.50, "Skinny", "DenimFlex", "Azul escuro", "Calças", 65, "./assets/jeans.png");
 		produtosM.add(calca);
-		Produto sapato  = new Produto("Sapato Social Elegance", "Sapato social elegante e refinado, confeccionado em couro legÃ­timo para um toque de sofisticaÃ§Ã£o.", 189.00, "Oxford", "ClassySteps", "Marrom", "CalÃ§ados", 20);
+		Produto sapato  = new Produto("Sapato Social Elegance", "Sapato social elegante e refinado, confeccionado em couro legÃ­timo para um toque de sofisticaÃ§Ã£o.", 189.00, "Oxford", "ClassySteps", "Marrom", "CalÃ§ados", 20, "./assets/sapato.png");
 		produtosM.add(sapato);
-		Produto moletom = new Produto("Moletom Urban Style", "Moletom urbano com capuz, perfeito para os dias mais frios, oferecendo conforto e estilo.", 69.95, "Unissex", "StreetChic", "Cinza mescla", "SuÃ©teres e Moletons", 45);
+		Produto moletom = new Produto("Moletom Urban Style", "Moletom urbano com capuz, perfeito para os dias mais frios, oferecendo conforto e estilo.", 69.95, "Unissex", "StreetChic", "Cinza mescla", "SuÃ©teres e Moletons", 45, "./assets/moletom.png");
 		produtosM.add(moletom);
-		Produto bolsa = new Produto("Bolsa Tote Versatile", "Bolsa tote espaçosa e versátil, Ótima para o dia a dia, com design moderno e diversos compartimentos.", 149.00, "Tote Bag", "FashionPlus", "Caramelo", "Bolsas", 25);
+		Produto bolsa = new Produto("Bolsa Tote Versatile", "Bolsa tote espaçosa e versátil, Ótima para o dia a dia, com design moderno e diversos compartimentos.", 149.00, "Tote Bag", "FashionPlus", "Caramelo", "Bolsas", 25, "./assets/bolsa.png");
 		produtosM.add(bolsa);
 		
-		Produto smartphone = new Produto("Smartphone TechMaster X10", "Um smartphone avançado com tela de alta resoluÃ§Ã£o e desempenho poderoso.", 1799.00, "X10 Pro", "TechMaster", "Preto", "Smartphones", 30);
+		Produto smartphone = new Produto("Smartphone TechMaster X10", "Um smartphone avançado com tela de alta resoluÃ§Ã£o e desempenho poderoso.", 1799.00, "X10 Pro", "TechMaster", "Preto", "Smartphones", 30, "./assets/smart.png");
 		produtosEl.add(smartphone);
-		Produto notebook = new Produto("Notebook UltraBook Pro", "Notebook ultraleve e ultrarrÃ¡pido, perfeito para produtividade e mobilidade.", 3299.00, "UltraBook Pro 13", "MaxTech", "Prata", "Notebooks", 20);
+		Produto notebook = new Produto("Notebook UltraBook Pro", "Notebook ultraleve e ultrarrÃ¡pido, perfeito para produtividade e mobilidade.", 3299.00, "UltraBook Pro 13", "MaxTech", "Prata", "Notebooks", 20, "./assets/not.png");
 		produtosEl.add(notebook);
-		Produto fone = new Produto("Fone de Ouvido NoiseFree", "Fone de ouvido sem fio com cancelamento de ruÃ­do para uma experiÃªncia sonora imersiva.", 349.90, "NoiseFree 500", "SoundWave", "Preto", "Fones de Ouvido", 50);
+		Produto fone = new Produto("Fone de Ouvido NoiseFree", "Fone de ouvido sem fio com cancelamento de ruÃ­do para uma experiÃªncia sonora imersiva.", 349.90, "NoiseFree 500", "SoundWave", "Preto", "Fones de Ouvido", 50, "./assets/airpod.png");
 		produtosEl.add(fone);
-		Produto tv = new Produto("Smart TV VisionPlus 55", "Smart TV com tela 4K e acesso a aplicativos de streaming, proporcionando entretenimento de qualidade.", 2999.00, "VisionPlus 55A", "TechVision", "Cinza", "Smart TVs", 15);
+		Produto tv = new Produto("Smart TV VisionPlus 55", "Smart TV com tela 4K e acesso a aplicativos de streaming, proporcionando entretenimento de qualidade.", 2999.00, "VisionPlus 55A", "TechVision", "Cinza", "Smart TVs", 15, "./assets/tv.png");
 		produtosEl.add(tv);
-		Produto camera = new Produto("Câmera Digital ShotMaster", "Câmera digital de alta resolução com recursos avanÃ§ados para capturar momentos especiais.", 1199.00, "ShotMaster 500X", "PixelPerfect", "Prata", "CÃ¢meras Digitais", 25);
+		Produto camera = new Produto("Câmera Digital ShotMaster", "Câmera digital de alta resolução com recursos avanÃ§ados para capturar momentos especiais.", 1199.00, "ShotMaster 500X", "PixelPerfect", "Prata", "CÃ¢meras Digitais", 25, "./assets/camera.png");
 		produtosEl.add(camera);
-		Produto impressora = new Produto("Impressora MultiFuncional PrintFast", "Impressora multifuncional que imprime, copia e digitaliza com alta velocidade e qualidade.", 499.00, "PrintFast 2022", "SwiftPrint", "Branco", "Impressoras", 40);
+		Produto impressora = new Produto("Impressora MultiFuncional PrintFast", "Impressora multifuncional que imprime, copia e digitaliza com alta velocidade e qualidade.", 499.00, "PrintFast 2022", "SwiftPrint", "Branco", "Impressoras", 40, "./assets/impressora.png");
 		produtosEl.add(impressora);
 		
-		Produto gold = new Produto("Whisky Gold Label", "Whisky escocês envelhecido por 12 anos, com notas de carvalho, baunilha e frutas secas.", 199.00, "12 anos", "Highland Distillery", "Diversas", "Whiskies", 10);
+		Produto gold = new Produto("Whisky Gold Label", "Whisky escocês envelhecido por 12 anos, com notas de carvalho, baunilha e frutas secas.", 199.00, "12 anos", "Highland Distillery", "Diversas", "Whiskies", 10, "./assets/gold.png");
 		produtosA.add(gold);
-		Produto absolute = new Produto("Vodka Premium", "Vodka destilada várias vezes para obter suavidade excepcional, perfeita para drinks e coquetÃ©is.", 79.90, "Premium", "Crystal Spirits", "Transparente", "Vodkas", 20 );
+		Produto absolute = new Produto("Vodka Premium", "Vodka destilada várias vezes para obter suavidade excepcional, perfeita para drinks e coquetÃ©is.", 79.90, "Premium", "Crystal Spirits", "Transparente", "Vodkas", 20, "./assets/vodka.png" );
 		produtosA.add(absolute);
-		Produto rum = new Produto("Rum Aged 8 anos", "Rum envelhecido por 8 anos em barris de carvalho, com sabores ricos de baunilha e caramelo.", 129.00, "Aged 8 anos", "Caribbean Rums", "Ã‚mbar", "Runs", 15 );
+		Produto rum = new Produto("Rum Aged 8 anos", "Rum envelhecido por 8 anos em barris de carvalho, com sabores ricos de baunilha e caramelo.", 129.00, "Aged 8 anos", "Caribbean Rums", "Ã‚mbar", "Runs", 15, "./assets/rum.png" );
 		produtosA.add(rum);
-		Produto gin = new Produto("Gin London Dry", "Gin tradicional estilo London Dry, com notas de zimbro e especiarias, perfeito para coquetÃ©is clÃ¡ssicos.", 59.90, "London Dry", "Gin Masters", "Transparente", "Gins", 25);
+		Produto gin = new Produto("Gin London Dry", "Gin tradicional estilo London Dry, com notas de zimbro e especiarias, perfeito para coquetÃ©is clÃ¡ssicos.", 59.90, "London Dry", "Gin Masters", "Transparente", "Gins", 25, "./assets/gin.png");
 		produtosA.add(gin);
-		Produto tequila = new Produto("Tequila Reposado", "Tequila descansada em barris de carvalho para obter sabor suave e notas de agave caramelizado.", 69.50, "Reposado", "Agave Fields", "Dourado", "Tequilas", 30);
+		Produto tequila = new Produto("Tequila Reposado", "Tequila descansada em barris de carvalho para obter sabor suave e notas de agave caramelizado.", 69.50, "Reposado", "Agave Fields", "Dourado", "Tequilas", 30, "./assets/tequila.png");
 		produtosA.add(tequila);
-		Produto ballantines = new Produto("Whisky Ballantine's Finest", "Um whisky blended escocÃªs suave e equilibrado, com notas de mel, baunilha e toques de frutas.", 89.90, "Ballantine's", "-","Dourado", "Whisky", 20);
+		Produto ballantines = new Produto("Whisky Ballantine's Finest", "Um whisky blended escocÃªs suave e equilibrado, com notas de mel, baunilha e toques de frutas.", 89.90, "Ballantine's", "-","Dourado", "Whisky", 20, "./assets/ballantines.png");
 		produtosA.add(ballantines);
 	}
 	
